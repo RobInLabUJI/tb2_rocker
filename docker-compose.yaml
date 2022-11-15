@@ -1,0 +1,27 @@
+---
+version: '3.7'
+
+services:
+  ros1-bridge:
+    image: amr-ros1-bridge:2022.3
+    environment:
+      ROS_MASTER_URI: "http://tb2_rocks:11311"
+      USER: "eiforamr"
+    volumes:
+      - type: bind
+        source: ./scripts
+        target: /scripts
+    command: "/scripts/ros1-bridge.bash"
+        
+  ros2-cmd-vel-relay:
+    image: ros2-topic-relay
+    command: "ros2 run topic_tools relay /cmd_vel /cmd_vel_mux/input/navi --ros-args --remap __node:=relay_cmd_vel"
+        
+  ros2-static-tf-bf-bl:
+    image: ros:foxy-ros-base-focal
+    command: "ros2 run tf2_ros static_transform_publisher 0 0 0.025 0 0 0 1 base_footprint base_link"
+    
+  ros2-static-tf-bl-fll:
+    image: ros:foxy-ros-base-focal
+    command: "ros2 run tf2_ros static_transform_publisher 0.210 0 0.159 1 0 0 0 base_link robot_front_laser_link"
+    
