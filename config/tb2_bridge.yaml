@@ -1,5 +1,9 @@
 topics:
   -
+    topic: /clock
+    type: rosgraph_msgs/msg/Clock
+    queue_size: 1
+  -
     topic: /odom
     type: nav_msgs/msg/Odometry
     queue_size: 1
