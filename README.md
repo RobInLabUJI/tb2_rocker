@@ -23,11 +23,12 @@ docker compose up
 
 ### Terminal 4
 ```
+xhost +
 docker run --env="USER=eiforamr" --name ei4amr-full \
-  --env="DISPLAY=$DISPLAY" -v /tmp/.X11-unix:/tmp/.X11-unix \
+  --env="DISPLAY=$DISPLAY" -v /tmp/.X11-unix:/tmp/.X11-unix -v $(pwd)/config:/config \
   --network tb2_rocker_default --rm -it eiforamr-full-flavour-sdk:2022.3 \
   /bin/bash
-rviz2 -d nav.rviz
+rviz2 -d /config/nav.rviz
 ```
 
 ### Terminal 5
