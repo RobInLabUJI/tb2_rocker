@@ -17,11 +17,15 @@ services:
     image: ros2-topic-relay
     command: "ros2 run topic_tools relay /cmd_vel /cmd_vel_mux/input/navi --ros-args --remap __node:=relay_cmd_vel"
         
+  ros2-scan-relay:
+    image: ros2-topic-relay
+    command: "ros2 run topic_tools relay /new_scan /scan --ros-args --remap __node:=relay_scan"
+
   ros2-static-tf-bf-bl:
     image: ros:foxy-ros-base-focal
-    command: "ros2 run tf2_ros static_transform_publisher 0 0 0.025 0 0 0 1 base_footprint base_link"
+    command: "ros2 run tf2_ros static_transform_publisher 0 0 0.01 0 0 0 1 base_footprint base_link"
     
   ros2-static-tf-bl-fll:
     image: ros:foxy-ros-base-focal
-    command: "ros2 run tf2_ros static_transform_publisher 0.210 0 0.159 1 0 0 0 base_link robot_front_laser_link"
+    command: "ros2 run tf2_ros static_transform_publisher -0.087 0.048 0.287 0 0 0 1 base_link camera_depth_frame"
     

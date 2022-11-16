@@ -19,7 +19,7 @@ topics:
       history: keep_all
       durability: transient_local
   -
-    topic: /scan
+    topic: /new_scan
     type: sensor_msgs/msg/LaserScan
     queue_size: 1   
       
