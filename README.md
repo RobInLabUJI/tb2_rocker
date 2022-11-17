@@ -4,7 +4,12 @@
 ```
 ./run.bash
 source /opt/ros/kinetic/setup.bash
+
 export TURTLEBOT_GAZEBO_WORLD_FILE=/opt/ros/kinetic/share/turtlebot_gazebo/worlds/corridor.world
+
+export GAZEBO_MODEL_PATH=/Dataset-of-Gazebo-Worlds-Models-and-Maps/worlds/experiment_rooms/models/
+export TURTLEBOT_GAZEBO_WORLD_FILE=/Dataset-of-Gazebo-Worlds-Models-and-Maps/worlds/experiment_rooms/worlds/room2/world.model
+
 roslaunch turtlebot_gazebo turtlebot_world.launch
 ```
 
